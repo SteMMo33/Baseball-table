@@ -28,41 +28,41 @@ ApplicationWindow {
 
         anchors.fill: parent
 
+       // -- STRIKE
         upDownStrike.onPressedUp: {
-            console.log("Strk+")
             strike += 1
+            if (strike >= 3){
+                strike = 0
+                ball = 0
+                out += 1
+                checkCambio()
+            }
         }
 
         upDownStrike.onPressedDown: {
             console.log("Strk-")
-            strike -= 1;
+            if (strike > 0) strike -= 1;
         }
 
         upDownBall.onPressedUp: {
             console.log("Ball+")
             ball += 1
+            if (ball >= 4){
+                strike = 0
+                ball = 0
+            }
         }
 
         upDownBall.onPressedDown: {
             console.log("Ball-")
-            if (ball > 1) ball -= 1
+            if (ball > 0) ball -= 1
         }
 
         // -- OUT
         upDownOut.onPressedUp: {
             console.log("Out+")
             out += 1
-            if (out >= 3){
-                strike = 0
-                ball = 0
-                if (topBottom==0)
-                    topBottom = 1
-                else {
-                    topBottom = 0;
-                    inning += 1;
-                }
-                out = 0
-            }
+            checkCambio()
         }
 
         upDownOut.onPressedDown: {
@@ -114,6 +114,21 @@ ApplicationWindow {
             colorDialog.open()
             rectColorVisitor.color = colorDialog.color
             colorVisitor = colorDialog.color
+        }
+    }
+
+
+    function checkCambio(){
+        if (out >= 3){
+            strike = 0
+            ball = 0
+            if (topBottom==0)
+                topBottom = 1
+            else {
+                topBottom = 0;
+                inning += 1;
+            }
+            out = 0
         }
     }
 
