@@ -11,5 +11,6 @@ int main(int argc, char *argv[])
     // Vedere https://makina-corpus.com/blog/metier/archives/access-json-webservice-qt-c
     // Vedere http://melannj.blogspot.com/2015/10/consuming-restful-web-service-with-c.html
 
+
     return app.exec();
 }

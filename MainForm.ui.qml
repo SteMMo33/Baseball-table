@@ -6,6 +6,11 @@ Item {
     id: main
     width: 900
     height: 600
+    property alias mouseAreaHome: mouseAreaHome
+    property alias mouseAreaVisitor: mouseAreaVisitor
+    property alias base1: base1
+    property alias base3: base3
+    property alias base2: base2
     property alias upDownInning: upDownInning
 
     property alias upDownOut: upDownOut
@@ -21,6 +26,7 @@ Item {
 
     //signal pressedStrikeUp
     //signal pressedStrikeDn
+
     RowLayout {
         id: rowTitle
         x: -174
@@ -30,8 +36,9 @@ Item {
         Text {
             id: textTitle
             color: "#882929"
-            text: qsTr("Baseball Table")
-            font.pixelSize: 60
+            text: qsTr("Baseball Scoreboard")
+            font.pixelSize: 40
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             font.family: "Arial"
             font.bold: true
         }
@@ -55,12 +62,29 @@ Item {
                 width: 100
                 height: 100
 
+                Rectangle {
+                    id: rectColorVisitor
+                    width: 50
+                    height: 50
+                    color: "#ff0000"
+
+                    MouseArea {
+                        id: mouseAreaColorVisitor
+                        anchors.fill: parent
+                    }
+                }
+
                 Text {
                     id: textVisitor
                     text: qsTr("Visitor")
                     font.pixelSize: 30
                     Layout.rightMargin: 15
                     font.bold: true
+
+                    MouseArea {
+                        id: mouseAreaVisitor
+                        anchors.fill: parent
+                    }
                 }
 
                 TextInput {
@@ -75,18 +99,6 @@ Item {
                     rightPadding: 20
                     leftPadding: 20
                 }
-
-                Rectangle {
-                    id: rectColorVisitor
-                    width: 50
-                    height: 50
-                    color: "#ff0000"
-
-                    MouseArea {
-                        id: mouseAreaColorVisitor
-                        anchors.fill: parent
-                    }
-                }
             }
 
             RowLayout {
@@ -94,12 +106,29 @@ Item {
                 width: 100
                 height: 100
 
+                Rectangle {
+                    id: rectColorHome
+                    width: 50
+                    height: 50
+                    color: "#ffffff"
+
+                    MouseArea {
+                        id: mouseAreaColorHome
+                        anchors.fill: parent
+                    }
+                }
+
                 Text {
                     id: textHome
                     text: qsTr("Home")
                     font.pixelSize: 30
                     Layout.rightMargin: 20
                     font.bold: true
+
+                    MouseArea {
+                        id: mouseAreaHome
+                        anchors.fill: parent
+                    }
                 }
 
                 TextInput {
@@ -114,18 +143,6 @@ Item {
                     rightPadding: 20
                     leftPadding: 20
                     selectByMouse: true
-                }
-
-                Rectangle {
-                    id: rectColorHome
-                    width: 50
-                    height: 50
-                    color: "#ffffff"
-
-                    MouseArea {
-                        id: mouseAreaColorHome
-                        anchors.fill: parent
-                    }
                 }
             }
         }
@@ -253,15 +270,16 @@ Item {
 
     Button {
         id: buttonReset
-        y: 520
-        width: 416
+        y: 542
+        width: 238
         height: 40
         text: qsTr("Reset completo")
+        anchors.left: parent.left
         anchors.bottom: parent.bottom
+        anchors.leftMargin: 18
         font.bold: true
         font.pointSize: 18
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottomMargin: 40
+        anchors.bottomMargin: 18
         flat: false
         highlighted: false
     }
@@ -273,5 +291,55 @@ Item {
         width: 54
         height: 128
         textDataText: "0"
+    }
+
+    Rectangle {
+        id: rectBasi
+        x: 511
+        y: 392
+        width: 200
+        height: 152
+        color: "#ffffff"
+
+        Text {
+            id: textBasi
+            text: qsTr("Basi")
+            anchors.left: parent.left
+            anchors.top: parent.top
+            font.pixelSize: 20
+            font.bold: true
+            anchors.leftMargin: 3
+            anchors.topMargin: 3
+        }
+
+        Base {
+            id: base2
+            x: 77
+            y: 35
+            width: 50
+            height: 50
+            rotation: 45
+            state: "libera"
+        }
+
+        Base {
+            id: base3
+            x: 37
+            y: 76
+            width: 50
+            height: 50
+            state: "libera"
+            rotation: 45
+        }
+
+        Base {
+            id: base1
+            x: 117
+            y: 76
+            width: 50
+            height: 50
+            state: "libera"
+            rotation: 45
+        }
     }
 }

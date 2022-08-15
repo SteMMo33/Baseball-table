@@ -4,7 +4,9 @@ QT += qml quick widgets
 
 CONFIG += c++11
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    player.cpp \
+    team.cpp
 
 RESOURCES += qml.qrc
 
@@ -32,3 +34,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     testata.png
+
+HEADERS += \
+    player.h \
+    team.h

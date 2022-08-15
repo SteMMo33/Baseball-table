@@ -4,5 +4,7 @@
         <file>MainForm.ui.qml</file>
         <file>BaseballTable.qml</file>
         <file>UpDown.qml</file>
+        <file>Base.qml</file>
+        <file>images/ball.png</file>
     </qresource>
 </RCC>

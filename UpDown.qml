@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 Item {
     id: item1
-    width: 100
-    height: 200
+    width: 80
+    height: 150
     property alias textDataText: textData.text
 
     signal pressedUp
@@ -22,6 +22,16 @@ Item {
             id: mouseAreaUp
             anchors.fill: parent
             onClicked: pressedUp()
+        }
+
+        Text {
+            id: text1
+            text: qsTr("+")
+            anchors.fill: parent
+            font.pixelSize: 20
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            font.bold: true
         }
     }
 
@@ -58,6 +68,17 @@ Item {
             anchors.fill: parent
             onClicked: pressedDown()
         }
+
+        Text {
+            id: text2
+            text: qsTr("-")
+            anchors.fill: parent
+            font.pixelSize: 20
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            font.bold: true
+        }
     }
+
 
 }

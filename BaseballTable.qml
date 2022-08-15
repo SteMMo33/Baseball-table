@@ -6,8 +6,10 @@ import QtQuick.Window 2.0
 Window {
     id: baseballTable
     visible: true
+    property alias imageBallHome: imageBallHome.visible
+    property alias imageBallVis: imageBallVis.visible
 
-    width: 400
+    width: 500
     height: 150
 
     // Proprietà gestire dalla finestra principale
@@ -26,18 +28,18 @@ Window {
     Rectangle{
         id: rectConteggio
         x: 0
-        y: 71
         width: 118
-        height: 80
-        radius: 4
-        border.width: 2
-        anchors.bottom: parent.bottom
+        height: 68
+        radius: 8
+        border.width: 3
+        anchors.top: rectSquadre.bottom
+        anchors.topMargin: 0
 
         Text {
             id: textConteggio
             text: qsTr("0 - 0")
             anchors.fill: parent
-            font.pixelSize: 40
+            font.pixelSize: 32
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignTop
             anchors.topMargin: 5
@@ -50,7 +52,7 @@ Window {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            font.pixelSize: 20
+            font.pixelSize: 16
             horizontalAlignment: Text.AlignHCenter
             font.bold: true
             anchors.bottomMargin: 6
@@ -76,17 +78,28 @@ Window {
             anchors.topMargin: 0
             anchors.leftMargin: 0
 
+            Image {
+                id: imageBallVis
+                width: 30
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                source: "images/ball.png"
+                anchors.topMargin: 5
+                anchors.bottomMargin: 4
+                fillMode: Image.PreserveAspectFit
+            }
+
             Text {
                 id: textVisitor
                 text: qsTr("Visitor")
-                anchors.left: parent.left
+                anchors.left: imageBallVis.right
                 anchors.top: parent.top
                 font.pixelSize: 12
                 verticalAlignment: Text.AlignVCenter
                 anchors.topMargin: 6
-                anchors.leftMargin: 8
                 font.bold: true
             }
+
 
             Text {
                 id: textPuntiVisitor
@@ -100,7 +113,9 @@ Window {
                 anchors.rightMargin: 10
                 font.bold: true
             }
+
         }
+
         Rectangle{
             id: rectHome
             height: 30
@@ -109,16 +124,27 @@ Window {
             anchors.right: parent.right
             anchors.bottom: parent.bottom
 
+            Image {
+                id: imageBallHome
+                width: 30
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                source: "images/ball.png"
+                anchors.bottomMargin: 4
+                fillMode: Image.PreserveAspectFit
+                anchors.topMargin: 5
+            }
+
             Text {
                 id: textHome
                 text: qsTr("Home")
-                anchors.left: parent.left
+                anchors.left: imageBallHome.right
                 anchors.top: parent.top
                 font.pixelSize: 14
                 anchors.topMargin: 6
-                anchors.leftMargin: 8
                 font.bold: true
             }
+
 
             Text {
                 id: textPuntiHome
@@ -132,23 +158,26 @@ Window {
                 font.bold: true
                 anchors.rightMargin: 10
             }
+
         }
+
     }
 
     Rectangle{
         id: rectInning
-        width: 80
-        height: 80
+        width: 70
+        height: 70
         radius: 8
         border.color: "#474fff"
         border.width: 3
         anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors.top: rectSquadre.bottom
+        anchors.topMargin: 0
         Text {
             id: textTopBot
-            text: ""
+            text: "TOP"
             anchors.top: parent.top
-            font.pixelSize: 15
+            font.pixelSize: 13
             font.bold: true
             anchors.topMargin: 8
             anchors.horizontalCenter: parent.horizontalCenter
@@ -160,15 +189,73 @@ Window {
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            font.pointSize: 30
+            font.pointSize: 25
             anchors.topMargin: 11
         }
 
     }
+
+    Rectangle {
+        id: rectBasi
+        width: 87
+        height: 60
+        opacity: 0.859
+        color: "#fedddd"
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.topMargin: 66
+
+
+        Base {
+            id: base1score
+            width: 30
+            height: 30
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.topMargin: 22
+            rotation: 45
+        }
+
+
+        Base {
+            id: base2score
+            width: 30
+            height: 30
+            rotation: 45
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Base {
+            id: base3score
+            width: 30
+            height: 30
+            anchors.top: parent.top
+            anchors.topMargin: 22
+            rotation: 45
+        }
+    }
+
+    Rectangle {
+        id: rectAtBat
+        color: "#dde0ff"
+        border.color: "#c1ceff"
+        border.width: 0
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: rectConteggio.bottom
+        anchors.bottom: parent.bottom
+        anchors.topMargin: 0
+
+        Text {
+            id: textAtBat
+            text: qsTr("AT BAT: XXX YYY")
+            anchors.fill: parent
+            font.pixelSize: 15
+            verticalAlignment: Text.AlignVCenter
+            leftPadding: 7
+            font.weight: Font.Bold
+        }
+    }
 }
 
-/*##^##
-Designer {
-    D{i:0;height:200;width:200}
-}
-##^##*/
+
