@@ -2,6 +2,8 @@ import QtQuick 2.7
 import QtQuick.Controls 1.4
 import QtQuick.Dialogs 1.2
 import QtQuick.Window 2.1
+// import com.stemmo.baseball 1.0
+
 
 Window {
     id: root
@@ -25,12 +27,26 @@ Window {
     property int nAtBatVisitor: 0
     property int nAtBatHome: 0
 
+    //property int ptiVisitor: 0
+    //property int ptiHome: 0
+    property int punti: 0
+
     //property Team teamV
     //property Team teamH
 
     MainForm {
 
         anchors.fill: parent
+        btnLoadHome.onClicked: {
+            console.log("Load Home")
+            teamVisitor.load()
+        }
+
+        btnLoadVisitor.onClicked: {
+            console.log("Load Visitor")
+            teamHome.save()
+        }
+
 
        // -- STRIKE
         upDownStrike.onPressedUp: {
@@ -95,6 +111,17 @@ Window {
             nameVisitor = textInputVisitor.text
         }
 
+        // -- Punti
+        upDownPunti.onPressedUp: {
+            if(topBottom==0){
+                ++punti
+                ++baseballTable.textPuntiVisitor;
+            } else {
+                ++punti
+                ++baseballTable.textPuntiHome;
+            }
+        }
+
         // -- INNING
         upDownInning.onPressedUp: {
             inning += 1
@@ -144,6 +171,7 @@ Window {
         if (out >= 3){
             strike = 0
             ball = 0
+            punti = 0
             if (topBottom==0){
                 topBottom = 1
                 baseballTable.imageBallHome = true
@@ -221,6 +249,9 @@ Window {
 
         imageBallHome: false
         imageBallVis: true
+
+        textPuntiVisitor: "0"
+        textPuntiHome: "0"
     }
 
 

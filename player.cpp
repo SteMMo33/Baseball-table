@@ -1,9 +1,6 @@
+#include <QDebug>
+
 #include "player.h"
-
-Player::Player()
-{
-
-}
 
 
 
@@ -12,17 +9,19 @@ void Player::read(const QJsonObject &json)
     if (json.contains("name") && json["name"].isString())
         mNome = json["name"].toString();
 
-    if (json.contains("level") && json["level"].isDouble())
-        mCognome = json["level"].toInt();
+    if (json.contains("lastname") && json["lastname"].isString())
+        mCognome = json["lastname"].toInt();
 
-    if (json.contains("classType") && json["classType"].isDouble())
-        mRuolo = json["classType"].toString();
+    if (json.contains("uniform") && json["uniform"].isString())
+        mCasacca = json["uniform"].toInt();
 }
 
 
-void Player::write(QJsonObject &json) const
+void Player::toJson(QJsonObject &json) const
 {
+    qDebug() << "[Player][toJson] " << mNome;
     json["name"] = mNome;
-    json["level"] = mCognome;
-    json["classType"] = mRuolo;
+    json["lastname"] = mCognome;
+    json["ruolo"] = mRuolo;
+    json.insert("uniform", mCasacca);
 }

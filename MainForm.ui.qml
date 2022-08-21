@@ -6,6 +6,9 @@ Item {
     id: main
     width: 900
     height: 600
+    property alias upDownPunti: upDownPunti
+    property alias btnLoadHome: btnLoadHome
+    property alias btnLoadVisitor: btnLoadVisitor
     property alias mouseAreaHome: mouseAreaHome
     property alias mouseAreaVisitor: mouseAreaVisitor
     property alias base1: base1
@@ -48,19 +51,20 @@ Item {
         id: rowHomeVisitor
         y: 85
         anchors.left: parent.left
+        anchors.right: parent.right
         anchors.top: rowTitle.bottom
-        anchors.leftMargin: 25
+        anchors.rightMargin: 20
+        anchors.leftMargin: 20
         anchors.topMargin: 29
 
         ColumnLayout {
             id: columnLayout
-            width: 100
-            height: 100
+            layer.enabled: false
+            Layout.fillWidth: true
 
             RowLayout {
                 id: rowLayoutVisitor
-                width: 100
-                height: 100
+                Layout.fillWidth: true
 
                 Rectangle {
                     id: rectColorVisitor
@@ -89,15 +93,20 @@ Item {
 
                 TextInput {
                     id: textInputVisitor
-                    width: 80
-                    height: 20
                     color: "#433aff"
                     text: nameVisitor
                     font.pixelSize: 30
+                    Layout.fillWidth: true
                     selectByMouse: true
                     padding: 2
                     rightPadding: 20
                     leftPadding: 20
+                }
+
+                Button {
+                    id: btnLoadVisitor
+                    text: qsTr("Carica Visitor")
+                    font.pointSize: 15
                 }
             }
 
@@ -133,16 +142,25 @@ Item {
 
                 TextInput {
                     id: textInputHome
-                    width: 80
-                    height: 20
                     color: "#433aff"
                     text: nameHome
                     font.pixelSize: 30
+                    Layout.fillWidth: true
                     focus: true
                     cursorVisible: true
                     rightPadding: 20
                     leftPadding: 20
                     selectByMouse: true
+                }
+
+                Button {
+                    id: btnLoadHome
+                    text: qsTr("Carica Home")
+                    Layout.fillWidth: false
+                    Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                    transformOrigin: Item.Center
+                    flat: false
+                    font.pointSize: 15
                 }
             }
         }
@@ -249,7 +267,7 @@ Item {
             }
 
             UpDown {
-                id: upDownInning1
+                id: upDownPunti
                 width: 80
                 textDataText: "1"
             }
@@ -282,15 +300,6 @@ Item {
         anchors.bottomMargin: 18
         flat: false
         highlighted: false
-    }
-
-    UpDown {
-        id: upDownPunti
-        x: 762
-        y: 464
-        width: 54
-        height: 128
-        textDataText: "0"
     }
 
     Rectangle {

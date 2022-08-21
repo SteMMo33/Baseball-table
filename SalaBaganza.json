@@ -1,0 +1,31 @@
+{
+    "logo": "sb.jpg",
+    "name": "SALA BAGANZA B.C.",
+    "roster": [
+        {
+            "lastname": "Pavarani",
+            "name": "Aldo",
+            "ruolo": "",
+            "uniform": 9
+        },
+        {
+            "lastname": "Zani",
+            "name": "Davide",
+            "ruolo": "",
+            "uniform": 77
+        },
+        {
+            "lastname": "Ronghini",
+            "name": "Filippo",
+            "ruolo": "",
+            "uniform": 32
+        },
+        {
+            "lastname": "Lori",
+            "name": "Filippo",
+            "ruolo": "",
+            "uniform": 31
+        }
+    ],
+    "shortname": "SBZ"
+}

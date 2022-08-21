@@ -6,6 +6,8 @@ import QtQuick.Window 2.0
 Window {
     id: baseballTable
     visible: true
+    property alias textPuntiHome: textPuntiHome.text
+    property alias textPuntiVisitor: textPuntiVisitor.text
     property alias imageBallHome: imageBallHome.visible
     property alias imageBallVis: imageBallVis.visible
 

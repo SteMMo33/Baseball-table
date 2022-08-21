@@ -3,6 +3,7 @@ TEMPLATE = app
 QT += qml quick widgets
 
 CONFIG += c++11
+CONFIG += qmltypes
 
 SOURCES += main.cpp \
     player.cpp \
@@ -15,6 +16,13 @@ QML_IMPORT_PATH =
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
 QML_DESIGNER_IMPORT_PATH =
+
+# Importazione namespace
+#QML_IMPORT_NAME = com.stemmo.baseball
+#QML_IMPORT_MAJOR_VERSION = 1
+
+OBJECTS_DIR = obj
+
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -33,7 +41,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    testata.png
+    ball.png
 
 HEADERS += \
     player.h \

@@ -1,13 +1,21 @@
 #ifndef TEAM_H
 #define TEAM_H
 
-#include "QString"
-#include "QList"
+#include <QObject>
+#include <QString>
+#include <QList>
+#include <QtQml/qqml.h>
+
 #include "player.h"
 
 
-class Team
+
+class Team : public QObject
 {
+    Q_OBJECT
+
+
+
 public:
     Team();
 
@@ -19,16 +27,16 @@ public:
 
     // Operazioni JSON
     void read(const QJsonObject &json);
-    void write(QJsonObject &json) const;
+    void toJson(QJsonObject &json) const;
 
 
-    int Load(QString filename);
-    int Save();
+    Q_INVOKABLE int load();
+    Q_INVOKABLE int save();
 
 private:
     QString mNome;
     QString mNomeShort;
-    QList<Player> mRoster;
+    QList<Player*> mRoster;
     QString mLogo;
     QString mFilename;
 };
